@@ -10,7 +10,7 @@ func TestPart1(t *testing.T) {
 	t.Parallel()
 
 	day := &day1.Day{
-		InputFile: "./day1/example.txt",
+		InputFile: "example.txt",
 	}
 
 	if err := day.Setup(); err != nil {
@@ -22,7 +22,7 @@ func TestPart1(t *testing.T) {
 		t.Fatalf("error running part 1: %s", err)
 	}
 
-	if result != "25000" {
-		t.Fatalf("expected result to be 25000, got %s", result)
+	if result != "24000" {
+		t.Fatalf("expected result to be 24000, got %s", result)
 	}
 }
