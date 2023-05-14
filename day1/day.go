@@ -25,6 +25,8 @@ func New() *Day {
 }
 
 // Number returns the day number.
+//
+// nolint:gomnd // This is the day number used by the advent package to print the day number.
 func (d *Day) Number() int {
 	return 1
 }

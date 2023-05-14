@@ -1,9 +1,12 @@
 // Package day6 implements the solution to Day 6 of the Advent of Code 2022.
 package day6
 
-type Day struct{
-	InputFile string
-}
+type (
+	// Day contains the required data to compute the solution.
+	Day struct {
+		InputFile string
+	}
+)
 
 // New returns a new instance of Day.
 func New() *Day {
@@ -16,4 +19,3 @@ func New() *Day {
 func (d *Day) Number() int {
 	return 6
 }
-

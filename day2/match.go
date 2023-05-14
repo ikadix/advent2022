@@ -51,6 +51,7 @@ func mapInputToResult(input string) int {
 	}
 }
 
+//nolint:gocognit // Barely over the limit and it's a simple function.
 func (m *Match) calculateResult() {
 	if m.OpponentMove == m.OurMove {
 		m.Result = draw

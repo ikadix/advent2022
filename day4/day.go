@@ -1,11 +1,13 @@
 // Package day4 implements the solution to Day 4 of the Advent of Code 2022.
 package day4
 
-// Day represents the data required for this days challenge.
-type Day struct {
-	Elves     [][2][2]int
-	InputFile string
-}
+type (
+	// Day represents the data required for this days challenge.
+	Day struct {
+		Elves     [][2][2]int
+		InputFile string
+	}
+)
 
 // New returns a new instance of Day.
 func New() *Day {

@@ -5,16 +5,24 @@ import (
 	"fmt"
 )
 
-// Directory represents a directory in the file system.
-type Directory struct {
-	Files       map[string]int
-	Directories map[string]*Directory
-	Size        int
-}
+type (
+	// Directory represents a directory in the file system.
+	Directory struct {
+		Files       map[string]int
+		Directories map[string]*Directory
+		Size        int
+	}
+
+	// Day contains the data for the solution.
+	Day struct {
+		Root      *Directory
+		InputFile string
+	}
+)
 
 // Print the directory tree.
 //
-//nolint:forbidigo // This is a debugging function.
+//nolint:forbidigo // This is a debug function.
 func (d *Directory) Print(indent string) {
 	for name, dir := range d.Directories {
 		fmt.Println(indent, name, dir.Size)
@@ -37,11 +45,6 @@ func (d *Directory) CalculateSize() int {
 	d.Size = size
 
 	return size
-}
-
-type Day struct {
-	Root      *Directory
-	InputFile string
 }
 
 // New returns a new instance of Day.

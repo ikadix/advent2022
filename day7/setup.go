@@ -9,6 +9,45 @@ import (
 	"strings"
 )
 
+func (d *Day) parseCommand(currentPath []string, currentDir *Directory, line string) ([]string, *Directory) {
+	command := strings.Split(strings.TrimPrefix(line, "$ "), " ")
+	switch command[0] {
+	case "cd":
+		if command[1] == "/" {
+			currentPath = []string{}
+			currentDir = d.Root
+
+			return currentPath, currentDir
+		}
+
+		if command[1] == ".." {
+			currentPath = currentPath[:len(currentPath)-1]
+			currentDir = d.Root
+
+			for _, dir := range currentPath {
+				currentDir = currentDir.Directories[dir]
+			}
+
+			return currentPath, currentDir
+		}
+
+		currentPath = append(currentPath, command[1])
+
+		if _, ok := currentDir.Directories[command[1]]; !ok {
+			currentDir.Directories[command[1]] = &Directory{
+				Files:       make(map[string]int),
+				Directories: make(map[string]*Directory),
+			}
+		}
+
+		currentDir = currentDir.Directories[command[1]]
+	case "ls":
+		return currentPath, currentDir
+	}
+
+	return currentPath, currentDir
+}
+
 // Setup sets up any required data for the days puzzle.
 func (d *Day) Setup() error {
 	readFile, err := os.Open(d.InputFile)
@@ -34,40 +73,7 @@ func (d *Day) Setup() error {
 		line := fileScanner.Text()
 
 		if strings.HasPrefix(line, "$") {
-			command := strings.Split(strings.TrimPrefix(line, "$ "), " ")
-			switch command[0] {
-			case "cd":
-				if command[1] == "/" {
-					currentPath = []string{}
-					currentDir = d.Root
-
-					continue
-				}
-
-				if command[1] == ".." {
-					currentPath = currentPath[:len(currentPath)-1]
-					currentDir = d.Root
-
-					for _, dir := range currentPath {
-						currentDir = currentDir.Directories[dir]
-					}
-
-					continue
-				}
-
-				currentPath = append(currentPath, command[1])
-
-				if _, ok := currentDir.Directories[command[1]]; !ok {
-					currentDir.Directories[command[1]] = &Directory{
-						Files:       make(map[string]int),
-						Directories: make(map[string]*Directory),
-					}
-				}
-
-				currentDir = currentDir.Directories[command[1]]
-			case "ls":
-				continue
-			}
+			currentPath, currentDir = d.parseCommand(currentPath, currentDir, line)
 
 			continue
 		}
