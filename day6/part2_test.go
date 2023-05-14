@@ -27,10 +27,13 @@ func TestPart2(t *testing.T) {
 		}
 	)
 
-	for i := range exampleSignals {
-		t.Run(exampleSignals[i], func(t *testing.T) {
+	for index := range exampleSignals {
+		index := index
+		t.Run(exampleSignals[index], func(t *testing.T) {
+			t.Parallel()
+
 			day := day6.Day{
-				DataStream: strings.Split(exampleSignals[i], ""),
+				DataStream: strings.Split(exampleSignals[index], ""),
 			}
 
 			ans, err := day.Part2()
@@ -38,10 +41,9 @@ func TestPart2(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			if ans != exampleAnswers[i] {
-				t.Fatalf("wrong answer, expected %v got %v", exampleAnswers[i], ans)
+			if ans != exampleAnswers[index] {
+				t.Fatalf("wrong answer, expected %v got %v", exampleAnswers[index], ans)
 			}
 		})
 	}
-
 }

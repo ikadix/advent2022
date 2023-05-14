@@ -1,9 +1,12 @@
 // Package day8 implements the solution to Day 8 of the Advent of Code 2022.
 package day8
 
-type Day struct{
-	InputFile string
-}
+type (
+	// Day is the implementation of Day 8.
+	Day struct{
+		InputFile string
+	}
+)
 
 // New returns a new instance of Day.
 func New() *Day {

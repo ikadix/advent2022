@@ -1,9 +1,10 @@
 package day8_test
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestPart2(t *testing.T) {
 	t.Parallel()
-
 }
 

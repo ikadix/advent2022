@@ -35,5 +35,4 @@ func TestPart2(t *testing.T) {
 	if result != "24933642" {
 		t.Fatal("incorrect result: ", result)
 	}
-
 }

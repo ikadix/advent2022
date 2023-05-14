@@ -16,9 +16,12 @@ cat > "$next"/day.go << EOM
 // Package $next implements the solution to Day $((max+1)) of the Advent of Code 2022.
 package $next
 
-type Day struct{
-	InputFile string
-}
+type (
+	// Day is the implementation of Day $((max+1)).
+	Day struct{
+		InputFile string
+	}
+)
 
 // New returns a new instance of Day.
 func New() *Day {
@@ -58,11 +61,12 @@ EOM
 cat > "$next"/part1_test.go << EOM
 package ${next}_test
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestPart1(t *testing.T) {
 	t.Parallel()
-
 }
 
 EOM
@@ -80,11 +84,12 @@ EOM
 cat > "$next"/part2_test.go << EOM
 package ${next}_test
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestPart2(t *testing.T) {
 	t.Parallel()
-
 }
 
 EOM

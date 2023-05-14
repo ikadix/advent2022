@@ -1,6 +1,8 @@
 package day7
 
-import "strconv"
+import (
+	"strconv"
+)
 
 const (
 	totalSpace     = 70000000
@@ -11,17 +13,18 @@ func (d *Day) isEnough(size int) bool {
 	return (totalSpace-d.Root.Size)+size > requiredSpaced
 }
 
-func (d *Day) getDeleteble(root *Directory) []*Directory {
-	deleteble := []*Directory{}
+func (d *Day) getDeleteable(root *Directory) []*Directory {
+	deleteable := []*Directory{}
 
 	for _, dir := range root.Directories {
 		if d.isEnough(dir.Size) {
-			deleteble = append(deleteble, dir)
+			deleteable = append(deleteable, dir)
 		}
-		deleteble = append(deleteble, d.getDeleteble(dir)...)
+
+		deleteable = append(deleteable, d.getDeleteable(dir)...)
 	}
 
-	return deleteble
+	return deleteable
 }
 
 func getSmallestDir(dirs []*Directory) *Directory {
@@ -38,8 +41,7 @@ func getSmallestDir(dirs []*Directory) *Directory {
 
 // Part2 is the solution to part 2 of the day's puzzle.
 func (d *Day) Part2() (string, error) {
-
-	deleteable := d.getDeleteble(d.Root)
+	deleteable := d.getDeleteable(d.Root)
 
 	if d.isEnough(d.Root.Size) {
 		deleteable = append(deleteable, d.Root)
