@@ -427,7 +427,6 @@ linters:
     - containedctx
     - contextcheck
     - cyclop
-    - deadcode
     - decorder
     - depguard
     - dogsled
@@ -444,6 +443,7 @@ linters:
     - forcetypeassert
     - funlen
     - gci
+    - gocheckcompilerdirectives
     - gochecknoglobals
     - gochecknoinits
     - gocognit
@@ -476,16 +476,15 @@ linters:
     - nlreturn
     - noctx
     - nolintlint
-    - nosnakecase
     - paralleltest
     - prealloc
     - predeclared
     - promlinter
+    - reassign
     - revive
     - rowserrcheck
     - sqlclosecheck
     - staticcheck
-    - structcheck
     - stylecheck
     - tagliatelle
     - tenv
@@ -496,7 +495,6 @@ linters:
     - unparam
     - unused
     - usestdlibvars
-    - varcheck
     - varnamelen
     - wastedassign
     - whitespace
