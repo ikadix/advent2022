@@ -8,6 +8,7 @@ import (
 type (
 	// Directory represents a directory in the file system.
 	Directory struct {
+		Name        string
 		Files       map[string]int
 		Directories map[string]*Directory
 		Size        int
@@ -51,6 +52,7 @@ func (d *Directory) CalculateSize() int {
 func New() *Day {
 	return &Day{
 		Root: &Directory{
+			Name:        "/",
 			Files:       make(map[string]int),
 			Directories: make(map[string]*Directory),
 		},

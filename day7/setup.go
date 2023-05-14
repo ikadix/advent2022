@@ -35,6 +35,7 @@ func (d *Day) parseCommand(currentPath []string, currentDir *Directory, line str
 
 		if _, ok := currentDir.Directories[command[1]]; !ok {
 			currentDir.Directories[command[1]] = &Directory{
+				Name:        command[1],
 				Files:       make(map[string]int),
 				Directories: make(map[string]*Directory),
 			}
@@ -80,6 +81,7 @@ func (d *Day) Setup() error {
 
 		if strings.HasPrefix(line, "dir") {
 			currentDir.Directories[strings.TrimPrefix(line, "dir ")] = &Directory{
+				Name:        strings.TrimPrefix(line, "dir "),
 				Files:       make(map[string]int),
 				Directories: make(map[string]*Directory),
 			}

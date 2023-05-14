@@ -12,6 +12,7 @@ func TestPart1(t *testing.T) {
 	day := &day7.Day{
 		InputFile: "example.txt",
 		Root: &day7.Directory{
+			Name:        "/",
 			Files:       map[string]int{},
 			Directories: map[string]*day7.Directory{},
 		},
