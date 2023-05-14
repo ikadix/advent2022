@@ -4,7 +4,8 @@ package day6
 type (
 	// Day contains the required data to compute the solution.
 	Day struct {
-		InputFile string
+		DataStream []string
+		InputFile  string
 	}
 )
 
