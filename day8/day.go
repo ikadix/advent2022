@@ -3,14 +3,17 @@ package day8
 
 type (
 	// Day is the implementation of Day 8.
-	Day struct{
+	Day struct {
+		TreeMap   [][]int
 		InputFile string
 	}
 )
 
 // New returns a new instance of Day.
 func New() *Day {
-	return &Day{}
+	return &Day{
+		InputFile: "day8/input.txt",
+	}
 }
 
 // Number returns the day number.
@@ -19,4 +22,3 @@ func New() *Day {
 func (d *Day) Number() int {
 	return 8
 }
-

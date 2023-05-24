@@ -10,6 +10,7 @@ import (
 	"github.com/ikadix/advent2022/day5"
 	"github.com/ikadix/advent2022/day6"
 	"github.com/ikadix/advent2022/day7"
+	"github.com/ikadix/advent2022/day8"
 )
 
 func main() {
@@ -21,5 +22,6 @@ func main() {
 		day5.New(),
 		day6.New(),
 		day7.New(),
+		day8.New(),
 	})
 }
